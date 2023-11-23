@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     bool isUserAuthenticated = true; // Cambia a true si el usuario está autenticado
     return  MaterialApp(
       title: 'Material App',
-      home: isUserAuthenticated ? HomePage() : LoginPage(),
+        home: isUserAuthenticated ? HomePage() : LoginPage(),
       theme: ThemeData.dark(
         useMaterial3: true
       ),

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "799206631783",
+    "firebase_url": "https://lenguajesenas-3071d-default-rtdb.firebaseio.com",
+    "project_id": "lenguajesenas-3071d",
+    "storage_bucket": "lenguajesenas-3071d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799206631783:android:b41d6a2a7ac87ea8f3a7c2",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7NqPTrE8J3rRLl92lHRCaf5Hq2IK2N04"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
