@@ -9,6 +9,7 @@ class PageFavorite extends StatefulWidget {
 
 class _PageFavoriteState extends State<PageFavorite> {
   String _selectedCategory = 'Días de la semana';
+  List<String> _favoriteImages = [];
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +38,11 @@ class _PageFavoriteState extends State<PageFavorite> {
                 scrollDirection: Axis.horizontal,
                 children: _getImagesByCategory(_selectedCategory),
               ),
+            ),
+            SizedBox(height: 20.0),
+            ElevatedButton(
+              onPressed: _showSavedImages,
+              child: Text('Guardados'),
             ),
           ],
         ),
@@ -68,28 +74,88 @@ class _PageFavoriteState extends State<PageFavorite> {
           'imagenes/viernes.jfif',
           'imagenes/sabado.jfif',
           'imagenes/domingo.jfif',
-          // Agrega más imágenes de días de la semana
         ];
         break;
       case 'Saludos y Despedidas':
         imagePaths = [
           'imagenes/buenos_dias.png',
           'imagenes/hasta_manana.png',
-          // Agrega más imágenes de saludos y despedidas
         ];
         break;
       default:
         imagePaths = [];
     }
 
-    return imagePaths.map((path) => FavoriteImage(path)).toList();
+    return imagePaths.map((path) => FavoriteImage(
+      imagePath: path,
+      isFavorite: _favoriteImages.contains(path),
+      onAddToFavorite: () => _addToFavorites(path),
+      onRemoveFromFavorite: () => _removeFromFavorites(path),
+    )).toList();
+  }
+
+  void _addToFavorites(String imagePath) {
+    setState(() {
+      _favoriteImages.add(imagePath);
+    });
+  }
+
+  void _removeFromFavorites(String imagePath) {
+    setState(() {
+      _favoriteImages.remove(imagePath);
+    });
+  }
+
+  void _showSavedImages() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Imágenes Guardadas'),
+          content: Container(
+            width: double.maxFinite,
+            child: _favoriteImages.isNotEmpty
+                ? GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 8.0,
+                      mainAxisSpacing: 8.0,
+                    ),
+                    itemCount: _favoriteImages.length,
+                    itemBuilder: (context, index) {
+                      return Image.asset(_favoriteImages[index]);
+                    },
+                  )
+                : Center(
+                    child: Text('No hay imágenes guardadas.'),
+                  ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cerrar'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
 
 class FavoriteImage extends StatelessWidget {
   final String imagePath;
+  final bool isFavorite;
+  final VoidCallback onAddToFavorite;
+  final VoidCallback onRemoveFromFavorite;
 
-  FavoriteImage(this.imagePath);
+  FavoriteImage({
+    required this.imagePath,
+    required this.isFavorite,
+    required this.onAddToFavorite,
+    required this.onRemoveFromFavorite,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -99,24 +165,13 @@ class FavoriteImage extends StatelessWidget {
         children: [
           Image.asset(
             imagePath,
-            width: 300.0, // Ajusta el ancho según tus necesidades
-            height: 300.0, // Ajusta la altura según tus necesidades
+            width: 300.0,
+            height: 300.0,
           ),
           Positioned(
             top: 0,
             right: 0,
-            child: _buildOverlayButton('+', () {
-              // Acción al hacer clic en el botón de añadir
-              print('Añadir imagen: $imagePath');
-            }),
-          ),
-          Positioned(
-            top: 0,
-            right: 30,
-            child: _buildOverlayButton('x', () {
-              // Acción al hacer clic en el botón de quitar
-              print('Quitar imagen: $imagePath');
-            }),
+            child: _buildOverlayButton(isFavorite ? 'x' : '+', isFavorite ? onRemoveFromFavorite : onAddToFavorite),
           ),
         ],
       ),
