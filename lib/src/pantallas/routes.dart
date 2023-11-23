@@ -5,14 +5,14 @@ import 'package:flutter_application_1/src/pantallas/page_settings.dart';
 
 class Routes extends StatelessWidget {
   final int index;
-  const Routes({super.key, required this.index});
+  const Routes({Key? key, required this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     List<Widget> myList =[
       const PageHome(),
       const PageFavorite(),
-      const pagesettings(),
+      const PageSettings(),
     ];
     return myList[index];
   }

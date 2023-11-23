@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/pantallas/page_login.dart';
 import 'package:flutter_application_1/src/pantallas/routes.dart';
@@ -10,12 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isUserAuthenticated =
-        true; // Cambia a true si el usuario está autenticado
-    return MaterialApp(
+    bool isUserAuthenticated = true; // Cambia a true si el usuario está autenticado
+    return  MaterialApp(
       title: 'Material App',
-      home: isUserAuthenticated ? HomePage() : LoginPage(),
-      theme: ThemeData.dark(useMaterial3: true),
+        home: isUserAuthenticated ? HomePage() : LoginPage(),
+      theme: ThemeData.dark(
+        useMaterial3: true
+      ),
+
     );
   }
 }
@@ -28,15 +31,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int index = 0;
-  botonesnavegador? mybnb;
+  int index=0;
+  botonesnavegador ?mybnb;
 
-  @override
+@override
   void initState() {
     // TODO: implement initState
-    mybnb = botonesnavegador(currentIndex: (i) {
+    mybnb = botonesnavegador(currentIndex: (i){
       setState(() {
-        index = i;
+        index=i;
       });
     });
     super.initState();
@@ -45,8 +48,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: mybnb,
-      body: Routes(index: index),
+    bottomNavigationBar: mybnb,
+    body: Routes(index: index),
+
     );
   }
 }
