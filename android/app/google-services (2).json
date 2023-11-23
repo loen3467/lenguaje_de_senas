@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "370932220907",
+    "project_id": "lenguajedesenas-f1e6d",
+    "storage_bucket": "lenguajedesenas-f1e6d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370932220907:android:25af1f8185ecb56fcb8fae",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrVKbGWEHgPhIMUh5irTZohtOgEqh_d60"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
