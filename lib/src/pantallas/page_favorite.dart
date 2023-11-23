@@ -10,6 +10,7 @@ class PageFavorite extends StatefulWidget {
 class _PageFavoriteState extends State<PageFavorite> {
   String _selectedCategory = 'Días de la semana';
   List<String> _favoriteImages = [];
+  TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +31,15 @@ class _PageFavoriteState extends State<PageFavorite> {
               children: [
                 _buildCategoryButton('Días de la semana'),
                 _buildCategoryButton('Saludos y Despedidas'),
+                _buildCategoryButton('Meses del año'),
               ],
             ),
             SizedBox(height: 20.0),
+            _buildSearchBar(),
             Expanded(
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: _getImagesByCategory(_selectedCategory),
+                children: _getImagesByCategory(_selectedCategory, _searchController.text),
               ),
             ),
             SizedBox(height: 20.0),
@@ -61,7 +64,30 @@ class _PageFavoriteState extends State<PageFavorite> {
     );
   }
 
-  List<Widget> _getImagesByCategory(String category) {
+  Widget _buildSearchBar() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextField(
+        controller: _searchController,
+        onChanged: (value) {
+          setState(() {});
+        },
+        decoration: InputDecoration(
+          labelText: 'Buscar',
+          suffixIcon: IconButton(
+            icon: Icon(Icons.clear),
+            onPressed: () {
+              setState(() {
+                _searchController.clear();
+              });
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  List<Widget> _getImagesByCategory(String category, String searchText) {
     List<String> imagePaths = [];
 
     switch (category) {
@@ -82,8 +108,31 @@ class _PageFavoriteState extends State<PageFavorite> {
           'imagenes/hasta_manana.png',
         ];
         break;
+      case 'Meses del año':
+        imagePaths = [
+          'imagenes/enero.jpg',
+          'imagenes/febrero.jpg',
+          'imagenes/marzo.jpg',
+          'imagenes/abril.jpg',
+          'imagenes/mayo.jpg',
+          'imagenes/junio.jpg',
+          'imagenes/julio.jpg',
+          'imagenes/agosto.jpg',
+          'imagenes/septiembre.jpg',
+          'imagenes/octubre.jpg',
+          'imagenes/noviembre.jpg',
+          'imagenes/diciembre.jpg',
+        ];
+        break;
       default:
         imagePaths = [];
+    }
+
+    if (searchText.isNotEmpty) {
+      // Filtro basado en la búsqueda
+      imagePaths = imagePaths
+          .where((path) => path.toLowerCase().contains(searchText.toLowerCase()))
+          .toList();
     }
 
     return imagePaths.map((path) => FavoriteImage(
