@@ -38,20 +38,46 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // ... (Código previo)
+              // Agregar imagen encima de los botones
+              Image.asset(
+                'imagenes/login/imagen_login.png', // Ruta de la imagen
+                width:
+                    250.0, // Ajusta el ancho de la imagen según tus necesidades
+                height:
+                    250.0, // Ajusta la altura de la imagen según tus necesidades
+              ),
+
+              SizedBox(height: 20), // Espacio entre la imagen y los botones
 
               ElevatedButton(
                 onPressed: _login,
-                child: Text('Iniciar Sesión'),
+                child: Text(
+                  'Iniciar Sesión',
+                  style: TextStyle(
+                    fontSize: 18.0, // Tamaño del texto
+                    fontWeight: FontWeight.bold, // Grosor del texto
+                    color: Colors.white, // Color del texto
+                  ),
+                ),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.green, // Color de fondo verde para el botón
+                  minimumSize: Size(250, 60), // Tamaño mínimo del botón
                 ),
               ),
+              SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _register, // Usar la función de registro
-                child: Text('Registrarme'),
+                child: Text(
+                  'Registrarme',
+                  style: TextStyle(
+                    fontSize: 18.0, // Tamaño del texto
+                    fontWeight: FontWeight.bold, // Grosor del texto
+                    color: Colors.white, // Color del texto
+                  ),
+                ),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.green, // Color de fondo verde para el botón
+                  minimumSize: Size(250, 60), // Tamaño mínimo del botón
                 ),
               ),
             ],
