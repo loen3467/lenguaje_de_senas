@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
+
 class PageSettings extends StatelessWidget {
   PageSettings({Key? key}) : super(key: key);
 
@@ -12,7 +13,8 @@ class PageSettings extends StatelessWidget {
         title: const Text(
           'Configuración',
           style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-          textAlign: TextAlign.center,),
+          textAlign: TextAlign.center,
+        ),
         actions: [
           IconButton(
             onPressed: () async {
@@ -23,7 +25,6 @@ class PageSettings extends StatelessWidget {
         ],
         backgroundColor: Colors.green,
       ),
-      
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -119,9 +120,6 @@ class PageSettings extends StatelessWidget {
   }
 }
 
-
-
-
 class ProfileDetailsScreen extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser;
 
@@ -176,14 +174,28 @@ class ProfileDetailsScreen extends StatelessWidget {
                   ),
                 );
               },
-              child: Text('Editar'),
+              child: Text(
+                'Editar',
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ElevatedButton.styleFrom(
+                primary:
+                    Colors.green, // Establecer el color de fondo como verde
+              ),
             ),
             SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Atrás'),
+              child: Text(
+                'Atrás',
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ElevatedButton.styleFrom(
+                primary:
+                    Colors.green, // Establecer el color de fondo como verde
+              ),
             ),
           ],
         ),
@@ -237,36 +249,60 @@ class EditProfileScreen extends StatelessWidget {
       ),
       body: Form(
         key: _formKey,
-        child: Column(
-          children: [
-            TextFormField(
-              controller: _currentPassword,
-              decoration: InputDecoration(labelText: 'Contraseña Actual'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Por favor, ingresa tu contraseña actual';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: _newPassword,
-              decoration: InputDecoration(labelText: 'Nueva Contraseña'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Por favor, ingresa una nueva contraseña';
-                }
-                return null;
-              },
-            ),
-            SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                changePassword();
-              },
-              child: Text('Cambiar Contraseña'),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(46.0),
+          child: Column(
+            children: [
+              SizedBox(height: 30.0),
+              Image.network(
+                'https://i.pinimg.com/originals/b7/7d/dd/b77ddd02c74f44ecb52e5ba48eeecc7d.png',
+                height: 200.0, // Ajusta según sea necesario
+                width: 200.0, // Ajusta según sea necesario
+                fit: BoxFit.cover,
+              ),
+              SizedBox(height: 70.0),
+              TextFormField(
+                controller: _currentPassword,
+                decoration: InputDecoration(
+                  labelText: 'Contraseña Actual',
+                  labelStyle: TextStyle(color: Colors.white),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, ingresa tu contraseña actual';
+                  }
+                  return null;
+                },
+              ),
+              TextFormField(
+                controller: _newPassword,
+                decoration: InputDecoration(
+                  labelText: 'Nueva Contraseña',
+                  labelStyle: TextStyle(color: Colors.white),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor, ingresa una nueva contraseña';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 46.0),
+              ElevatedButton(
+                onPressed: () {
+                  changePassword();
+                },
+                child: Text(
+                  'Cambiar Contraseña',
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary:
+                      Colors.green, // Establecer el color de fondo como verde
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -278,25 +314,27 @@ class TimeTracker {
   static int elapsedTimeInSeconds = 0;
   static int updateIntervalInSeconds = 1;
 }
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-        title: Text(
-          'Tiempo acumulado en la aplicación',
-          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-          textAlign: TextAlign.center,
+          title: Text(
+            'Tiempo acumulado en la aplicación',
+            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          backgroundColor: Colors
+              .green, // Cambia el color de fondo de la barra de navegación
         ),
-        backgroundColor:
-            Colors.green, // Cambia el color de fondo de la barra de navegación
-      ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Tiempo acumulado: ${TimeTracker.elapsedTimeInSeconds} segundos'),
+              Text(
+                  'Tiempo acumulado: ${TimeTracker.elapsedTimeInSeconds} segundos'),
               // Agrega otros widgets de tu aplicación aquí
             ],
           ),
@@ -305,9 +343,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
 
 class HelpAndSupportScreen extends StatelessWidget {
   @override
@@ -318,7 +353,8 @@ class HelpAndSupportScreen extends StatelessWidget {
           'Ayuda y Soporte',
           style: TextStyle(fontSize: 18.0),
         ),
-        backgroundColor: Colors.green, // Cambia el color de fondo de la barra de navegación
+        backgroundColor:
+            Colors.green, // Cambia el color de fondo de la barra de navegación
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -341,7 +377,9 @@ class HelpAndSupportScreen extends StatelessWidget {
               style: TextStyle(fontSize: 16.0, fontStyle: FontStyle.italic),
             ),
             SizedBox(height: 16.0),
-            Divider(color: Colors.grey), // Línea divisoria para mejorar la legibilidad
+            Divider(
+                color:
+                    Colors.grey), // Línea divisoria para mejorar la legibilidad
             SizedBox(height: 16.0),
             Text(
               'Navegación y Funcionalidades:',
