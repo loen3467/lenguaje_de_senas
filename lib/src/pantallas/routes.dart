@@ -11,7 +11,7 @@ class Routes extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> myList =[
       const PageHome(),
-      const PageFavorite(),
+      const PageFavorite(favoriteImages: []), // Aquí proporciona una lista vacía o tus imágenes favoritas
       const PageSettings(),
     ];
     return myList[index];

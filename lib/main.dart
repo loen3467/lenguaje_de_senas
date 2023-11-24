@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Título de la aplicación'),
+        title: const Text('HANDS-ON'),
         leading: index == 0 // Puedes personalizar esto según tu necesidad
             ? null
             : IconButton(

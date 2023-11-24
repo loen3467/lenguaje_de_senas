@@ -46,7 +46,7 @@ class PageHome extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       Text(
-                        'Abecedario',
+                        'Abecedario y Numeros',
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -61,7 +61,7 @@ class PageHome extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Palabras()),
+                      MaterialPageRoute(builder: (context) => PagePalabras()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -134,7 +134,6 @@ class PageHome extends StatelessWidget {
   }
 }
 
-
 class TraductorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -143,8 +142,22 @@ class TraductorScreen extends StatelessWidget {
         title: Text('Traductor'),
       ),
       body: Center(
-        child: Text('Contenido del Traductor'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Contenido del Traductor'),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Navegar hacia atrás a la página principal
+                Navigator.pop(context);
+              },
+              child: Text('Volver a la Página Principal'),
+            ),
+          ],
+        ),
       ),
     );
   }
+  
 }

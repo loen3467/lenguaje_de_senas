@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class PageFavorite extends StatefulWidget {
-  const PageFavorite({Key? key}) : super(key: key);
+  const PageFavorite({Key? key, required this.favoriteImages}) : super(key: key);
+
+  final List<String> favoriteImages;
 
   @override
   _PageFavoriteState createState() => _PageFavoriteState();
@@ -9,8 +11,14 @@ class PageFavorite extends StatefulWidget {
 
 class _PageFavoriteState extends State<PageFavorite> {
   String _selectedCategory = 'Días de la semana';
-  List<String> _favoriteImages = [];
   TextEditingController _searchController = TextEditingController();
+  late List<String> _favoriteImages;  // Lista de imágenes favoritas
+
+  @override
+  void initState() {
+    super.initState();
+    _favoriteImages = List.from(widget.favoriteImages);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -246,7 +254,7 @@ void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
-        body: PageFavorite(),
+        body: PageFavorite(favoriteImages: []),
       ),
     ),
   );

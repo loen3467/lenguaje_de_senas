@@ -58,6 +58,9 @@ flutter:
   uses-material-design: true
   assets:
     - imagenes/
+    - imagenes/home/abecedario.jpeg
+    - imagenes/home/palabras_recurrentes.jpeg
+    - imagenes/home/traductor.jpeg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
