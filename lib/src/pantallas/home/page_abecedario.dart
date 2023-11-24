@@ -40,9 +40,10 @@ class _AbecedarioScreenState extends State<AbecedarioScreen> {
         appBar: AppBar(
           title: Text(
             mostrarAbecedario ? 'Abecedario' : 'Números',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white,fontSize: 20.0, fontWeight: FontWeight.bold),
           ),
-          backgroundColor: Colors.black,
+          backgroundColor:
+            Colors.green,
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -107,7 +108,7 @@ class _AbecedarioScreenState extends State<AbecedarioScreen> {
           ),
         ),
         bottomNavigationBar: BottomAppBar(
-          color: Colors.black,
+          color: Color.fromARGB(255, 0, 0, 0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -129,9 +130,10 @@ class _AbecedarioScreenState extends State<AbecedarioScreen> {
                   });
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: mostrarAbecedario ? Colors.grey : Colors.blue,
+                  primary: mostrarAbecedario ? const Color.fromARGB(255, 33, 243, 131) : Color.fromARGB(255, 33, 243, 131),
                 ),
-                child: Text('Números'),
+                child: Text('Números',
+                style: TextStyle(color: Colors.white)),
               ),
             ],
           ),
@@ -159,7 +161,7 @@ class _AbecedarioScreenState extends State<AbecedarioScreen> {
     );
   }
 
-  Widget numeroImage(String numero, String imageUrl) {
+ Widget numeroImage(String numero, String imageUrl) {
     return Column(
       children: [
         Image.network(
@@ -176,7 +178,6 @@ class _AbecedarioScreenState extends State<AbecedarioScreen> {
     );
   }
 }
-
 void main() {
   runApp(AbecedarioScreen());
 }
