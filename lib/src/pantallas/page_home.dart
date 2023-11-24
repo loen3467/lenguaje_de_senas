@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
-
 import './home/page_palabras.dart';
 import './home/page_abecedario.dart';
 
 class PageHome extends StatelessWidget {
-  const PageHome({Key? key}) : super(key: key);
+  PageHome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bienvenido usuario'),
+        title: Text(
+          'Bienvenido usuario',
+          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+        backgroundColor:
+            Colors.green, // Cambia el color de fondo de la barra de navegación
       ),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              SizedBox(height: 60.0),
               SizedBox(
                 width: 180.0,
                 height: 180.0,
@@ -48,6 +54,10 @@ class PageHome extends StatelessWidget {
                       Text(
                         'Abecedario',
                         textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16.0,
+                        ),
                       ),
                     ],
                   ),
@@ -84,6 +94,10 @@ class PageHome extends StatelessWidget {
                       Text(
                         'Palabras Cotidianas',
                         textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16.0,
+                        ),
                       ),
                     ],
                   ),
@@ -121,6 +135,10 @@ class PageHome extends StatelessWidget {
                       Text(
                         'Traductor',
                         textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16.0,
+                        ),
                       ),
                     ],
                   ),
@@ -133,7 +151,6 @@ class PageHome extends StatelessWidget {
     );
   }
 }
-
 
 class TraductorScreen extends StatelessWidget {
   @override

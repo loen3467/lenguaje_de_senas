@@ -9,9 +9,9 @@ class Routes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> myList =[
-      const PageHome(),
+       PageHome(),
       const PageFavorite(),
-      const PageSettings(),
+       PageSettings(),
     ];
     return myList[index];
   }

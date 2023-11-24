@@ -15,17 +15,20 @@ class _PageFavoriteState extends State<PageFavorite> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Favoritos',
+          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+        backgroundColor: Colors.green, // Cambia el color de fondo de la barra de navegación
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 80.0),
-            Text(
-              'Favoritos',
-              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 20.0),
+            
+            SizedBox(height: 70.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
