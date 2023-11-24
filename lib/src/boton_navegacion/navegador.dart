@@ -1,44 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 
-class botonesnavegador extends StatefulWidget {
-  final Function currentIndex;
-  const botonesnavegador({super.key,required this.currentIndex});
+class BotonesNavegador extends StatefulWidget {
+  final Function(int) currentIndex;
+
+  BotonesNavegador({required this.currentIndex});
 
   @override
-  State<botonesnavegador> createState() => _botonesnavegadorState();
+  _BotonesNavegadorState createState() => _BotonesNavegadorState();
 }
 
-class _botonesnavegadorState extends State<botonesnavegador> {
-  int index = 0;
+class _BotonesNavegadorState extends State<BotonesNavegador> {
+  int _currentIndex = 0;
+
   @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: index,
-      onTap: (int i){
-        setState(() {
-          index=i;
-          widget.currentIndex(i);
-        });
-      },
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: Colors.green,
-      iconSize: 25.0,
-      selectedFontSize: 14.0,
-      unselectedFontSize: 12.0,
-      items: const[
-      BottomNavigationBarItem(
-        icon: Icon(Icons.home),
-        label: 'Inicio'
-        ),
-        BottomNavigationBarItem(
-        icon: Icon(Icons.favorite),
-        label: 'Favoritos'
-        ),
-        BottomNavigationBarItem(
-        icon: Icon(Icons.person),
-        label: 'Configuracion'
-        ),
-    ]);
-  }
+Widget build(BuildContext context) {
+  return AnimatedBottomNavigationBar(
+    icons: const [Icons.home, Icons.favorite, Icons.person],
+    activeIndex: _currentIndex,
+    gapLocation: GapLocation.none,
+    notchSmoothness: NotchSmoothness.softEdge,
+    leftCornerRadius: 32,
+    rightCornerRadius: 32,
+    backgroundColor: Colors.black, // Fondo negro
+    activeColor: Colors.green, // Color del ícono activo verde
+    splashColor: Colors.green, // Color del efecto de onda al tocar
+    onTap: (index) {
+      setState(() {
+        _currentIndex = index;
+        widget.currentIndex(index);
+      });
+    }, // Nombres de las etiquetas
+  );
 }
 
+}

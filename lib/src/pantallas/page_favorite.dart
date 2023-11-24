@@ -21,13 +21,13 @@ class _PageFavoriteState extends State<PageFavorite> {
           style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
-        backgroundColor: Colors.green, // Cambia el color de fondo de la barra de navegación
+        backgroundColor:
+            Colors.green, // Cambia el color de fondo de la barra de navegación
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            
             SizedBox(height: 70.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -42,13 +42,21 @@ class _PageFavoriteState extends State<PageFavorite> {
             Expanded(
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: _getImagesByCategory(_selectedCategory, _searchController.text),
+                children: _getImagesByCategory(
+                    _selectedCategory, _searchController.text),
               ),
             ),
             SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: _showSavedImages,
-              child: Text('Guardados'),
+              child: Text('Guardados',
+                style: TextStyle(color: Colors.white),
+              ),
+              style: ElevatedButton.styleFrom(
+                primary:
+                    Colors.green, // Establecer el color de fondo como verde
+              ),
+
             ),
           ],
         ),
@@ -63,7 +71,13 @@ class _PageFavoriteState extends State<PageFavorite> {
           _selectedCategory = category;
         });
       },
-      child: Text(category),
+      style: ElevatedButton.styleFrom(
+        primary: Colors.green, // Establecer el color de fondo como verde
+      ),
+      child: Text(
+        category,
+        style: TextStyle(color: Colors.white),
+      ),
     );
   }
 
@@ -134,16 +148,19 @@ class _PageFavoriteState extends State<PageFavorite> {
     if (searchText.isNotEmpty) {
       // Filtro basado en la búsqueda
       imagePaths = imagePaths
-          .where((path) => path.toLowerCase().contains(searchText.toLowerCase()))
+          .where(
+              (path) => path.toLowerCase().contains(searchText.toLowerCase()))
           .toList();
     }
 
-    return imagePaths.map((path) => FavoriteImage(
-      imagePath: path,
-      isFavorite: _favoriteImages.contains(path),
-      onAddToFavorite: () => _addToFavorites(path),
-      onRemoveFromFavorite: () => _removeFromFavorites(path),
-    )).toList();
+    return imagePaths
+        .map((path) => FavoriteImage(
+              imagePath: path,
+              isFavorite: _favoriteImages.contains(path),
+              onAddToFavorite: () => _addToFavorites(path),
+              onRemoveFromFavorite: () => _removeFromFavorites(path),
+            ))
+        .toList();
   }
 
   void _addToFavorites(String imagePath) {
@@ -223,7 +240,8 @@ class FavoriteImage extends StatelessWidget {
           Positioned(
             top: 0,
             right: 0,
-            child: _buildOverlayButton(isFavorite ? 'x' : '+', isFavorite ? onRemoveFromFavorite : onAddToFavorite),
+            child: _buildOverlayButton(isFavorite ? 'x' : '+',
+                isFavorite ? onRemoveFromFavorite : onAddToFavorite),
           ),
         ],
       ),

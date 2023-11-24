@@ -15,17 +15,19 @@ class _AbecedarioScreenState extends State<AbecedarioScreen> {
         appBar: AppBar(
           title: Text(
             mostrarAbecedario ? 'Abecedario' : 'Números',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white,fontSize: 20.0, fontWeight: FontWeight.bold),
           ),
-          backgroundColor: Colors.black,
+          backgroundColor:
+            Colors.green,
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pop(context);
             },
           ),
+          
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.black,  
         body: SingleChildScrollView(
           child: Center(
             child: Column(
@@ -142,7 +144,7 @@ class _AbecedarioScreenState extends State<AbecedarioScreen> {
           ),
         ),
         bottomNavigationBar: BottomAppBar(
-          color: Colors.black,
+          color: Color.fromARGB(255, 0, 0, 0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -153,9 +155,10 @@ class _AbecedarioScreenState extends State<AbecedarioScreen> {
                   });
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: mostrarAbecedario ? Colors.blue : Colors.grey,
+                  primary: mostrarAbecedario ? const Color.fromARGB(255, 33, 243, 131) : const Color.fromARGB(255, 33, 243, 131)     ),
+                child: Text('Abecedario',
+                  style: TextStyle(color: Colors.white),
                 ),
-                child: Text('Abecedario'),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -164,9 +167,10 @@ class _AbecedarioScreenState extends State<AbecedarioScreen> {
                   });
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: mostrarAbecedario ? Colors.grey : Colors.blue,
+                  primary: mostrarAbecedario ? const Color.fromARGB(255, 33, 243, 131) : Color.fromARGB(255, 33, 243, 131),
                 ),
-                child: Text('Números'),
+                child: Text('Números',
+                style: TextStyle(color: Colors.white)),
               ),
             ],
           ),

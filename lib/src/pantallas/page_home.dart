@@ -22,7 +22,7 @@ class PageHome extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 60.0),
+              SizedBox(height: 120.0),
               SizedBox(
                 width: 180.0,
                 height: 180.0,
@@ -63,7 +63,7 @@ class PageHome extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 50),
               SizedBox(
                 width: 180.0,
                 height: 180.0,
@@ -71,7 +71,7 @@ class PageHome extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Palabras()),
+                      MaterialPageRoute(builder: (context) => PagePalabras()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -104,7 +104,7 @@ class PageHome extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              SizedBox(
+              /*SizedBox(
                 width: 180.0,
                 height: 180.0,
                 child: ElevatedButton(
@@ -142,8 +142,8 @@ class PageHome extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),
-              ),
+                ),*/
+              
             ],
           ),
         ),

@@ -39,12 +39,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int index=0;
-  botonesnavegador ?mybnb;
+  BotonesNavegador ?mybnb;
 
 @override
   void initState() {
     // TODO: implement initState
-    mybnb = botonesnavegador(currentIndex: (i){
+    mybnb = BotonesNavegador(currentIndex: (i){
       setState(() {
         index=i;
       });
