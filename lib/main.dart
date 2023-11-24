@@ -12,14 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isUserAuthenticated = true; // Cambia a true si el usuario está autenticado
-    return  MaterialApp(
+    return MaterialApp(
       title: 'Material App',
-        home: isUserAuthenticated ? HomePage() : LoginPage(),
+      home: isUserAuthenticated ? HomePage() : LoginPage(),
       theme: ThemeData.dark(
-        useMaterial3: true
-      ),
-
-    );
+        useMaterial3: true,
+    ),
+  );
   }
 }
 
@@ -31,15 +30,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int index=0;
-  botonesnavegador ?mybnb;
+  int index = 0;
+  botonesnavegador? mybnb;
 
-@override
+  @override
   void initState() {
-    // TODO: implement initState
-    mybnb = botonesnavegador(currentIndex: (i){
+    mybnb = botonesnavegador(currentIndex: (i) {
       setState(() {
-        index=i;
+        index = i;
       });
     });
     super.initState();
@@ -48,9 +46,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    bottomNavigationBar: mybnb,
-    body: Routes(index: index),
-
-    );
-  }
-}
+      appBar: AppBar(
+        title: const Text('Título de la aplicación'),
+        leading: index == 0 // Puedes personalizar esto según tu necesidad
+            ? null
+            : IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.of(context).pop(); // Pop la última pantalla
+                },
+              ),
+      ),
+      bottomNavigationBar: mybnb,
+      body: Routes(index: index),
+  );
+  }}
