@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
+import 'package:image_picker/image_picker.dart';
 
 class PageSettings extends StatelessWidget {
   PageSettings({Key? key}) : super(key: key);
