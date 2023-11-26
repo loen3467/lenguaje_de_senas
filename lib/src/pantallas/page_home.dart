@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import './home/page_palabras.dart';
 import './home/page_abecedario.dart';
-
+import '../pantallas/home/pade_traductor.dart';
 class PageHome extends StatelessWidget {
   PageHome({Key? key}) : super(key: key);
 
@@ -22,7 +22,7 @@ class PageHome extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 120.0),
+              SizedBox(height: 50.0),
               SizedBox(
                 width: 180.0,
                 height: 180.0,
@@ -63,7 +63,7 @@ class PageHome extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 50),
+              SizedBox(height: 30),
               SizedBox(
                 width: 180.0,
                 height: 180.0,
@@ -103,16 +103,15 @@ class PageHome extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
-              /*SizedBox(
+              SizedBox(height: 30), 
+              SizedBox(
                 width: 180.0,
                 height: 180.0,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => TraductorScreen()),
+                      MaterialPageRoute(builder: (context) => TraductorScreen()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -121,13 +120,13 @@ class PageHome extends StatelessWidget {
                     ),
                     padding: EdgeInsets.all(10),
                     elevation: 0,
-                    primary: Colors.red,
+                    primary: Colors.brown,
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        'imagenes/home/traductor.jpeg',
+                        'imagenes/home/palabras_recurrentes.jpeg',
                         width: 100.0,
                         height: 100.0,
                       ),
@@ -142,8 +141,9 @@ class PageHome extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),*/
-              
+                ),
+              ),
+              SizedBox(height: 20),      
             ],
           ),
         ),
@@ -152,16 +152,3 @@ class PageHome extends StatelessWidget {
   }
 }
 
-class TraductorScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Traductor'),
-      ),
-      body: Center(
-        child: Text('Contenido del Traductor'),
-      ),
-    );
-  }
-}

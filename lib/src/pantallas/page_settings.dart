@@ -1,9 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:async';
-import 'package:image_picker/image_picker.dart';
-
+import 'package:bcrypt/bcrypt.dart';
 class PageSettings extends StatelessWidget {
   PageSettings({Key? key}) : super(key: key);
 
@@ -398,10 +395,37 @@ class HelpAndSupportScreen extends StatelessWidget {
   }
 }
 
-void main() {
-  runApp(
-    MaterialApp(
-      home: PageSettings(),
-    ),
+void encriptado(BuildContext context) {
+  // Contraseña que deseas hashear
+  String password = 'miContraseña123';
+
+  // Generar el hash bcrypt
+  String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+
+  // Mostrar la información en un widget de texto
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Resultados'),
+        content: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('Contraseña original: $password'),
+            Text('Contraseña hasheada: $hashedPassword'),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('Cerrar'),
+          ),
+        ],
+      );
+    },
   );
+  
 }

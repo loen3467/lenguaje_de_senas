@@ -61,17 +61,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
-/*@override
-  Widget build(BuildContext context) {
-    bool isUserAuthenticated = false; // Cambia a true si el usuario está autenticado
-    return  MaterialApp(
-      title: 'Material App',
-        home: isUserAuthenticated ? HomePage() : LoginPage(),
-      theme: ThemeData.dark(
-        useMaterial3: true
-      ),
-
-    );
-  }*/

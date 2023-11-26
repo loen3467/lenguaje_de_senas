@@ -253,7 +253,7 @@ class FavoriteImage extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         padding: const EdgeInsets.all(8.0),
-        color: Colors.black.withOpacity(0.5),
+        color: Colors.red.withOpacity(0.9),
         child: Text(
           text,
           style: TextStyle(color: Colors.white, fontSize: 20.0),
@@ -272,3 +272,4 @@ void main() {
     ),
   );
 }
+
