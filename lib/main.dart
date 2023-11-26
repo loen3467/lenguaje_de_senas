@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lenguaje_de_senas_proyecto/src/page/auth_page.dart';
-import './src/pantallas/page_login.dart';
 import './src/pantallas/routes.dart';
 import 'src/boton_navegacion/navegador.dart';
 import 'package:firebase_core/firebase_core.dart';
